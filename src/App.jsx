@@ -8,14 +8,28 @@ import useLocalStorage from "./hooks/useLocalStorage.jsx"
 const initialActivities = [
   {
     id: uid(),
-    name: "hello",
+    name: "good",
     isForGoodWeather: true,
+  },
+  {
+    id: uid(),
+    name: "bad",
+    isForGoodWeather: false,
   },
 ]
 
 function App() {
-  const [activities, setActivities] = useLocalStorage("activities", initialActivities)
+  const [activities, setActivities] = useLocalStorage(
+    "activities",
+    initialActivities
+  )
+  const isForGoodWeather = true
 
+  function filterActivities() {
+    return activities.filter(
+      (activity) => activity.isForGoodWeather == isForGoodWeather
+    )
+  }
 
   function handleAddActivity(name, isForGoodWeather) {
     setActivities([
@@ -30,10 +44,9 @@ function App() {
 
   return (
     <>
-      <List activites={ activities } />
+      <List activites={filterActivities()} isGoodWeather={isForGoodWeather} />
       <Form onAddActivity={handleAddActivity} />
     </>
-
   )
 }
 
