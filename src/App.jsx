@@ -14,10 +14,7 @@ const initialActivities = [
 ]
 
 function App() {
-  const [activities, setActivities] = useState(initialActivities)
-  const [state, setState] = useLocalStorage("activities", { defaultValue:""} )
-
-  setState("hello mum")
+  const [activities, setActivities] = useLocalStorage("activities", initialActivities)
 
 
   function handleAddActivity(name, isForGoodWeather) {
@@ -36,7 +33,7 @@ function App() {
       <List activites={ activities } />
       <Form onAddActivity={handleAddActivity} />
     </>
-    
+
   )
 }
 
