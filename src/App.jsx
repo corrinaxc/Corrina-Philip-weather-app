@@ -33,6 +33,12 @@ function App() {
     )
   }
 
+  function handleDeleteActivity(id) {
+    // filter activities - return all besides the activity where activity.id = id
+    const filteredResult = activities.filter((activity) => activity.id !== id)
+    setActivities(filteredResult)
+  }
+
   function handleAddActivity(name, isForGoodWeather) {
     setActivities([
       ...activities,
@@ -47,7 +53,11 @@ function App() {
   return (
     <>
       <Weather isWeatherGood={setIsWeatherGood} />
-      <List activites={filterActivities()} isGoodWeather={isWeatherGood} />
+      <List
+        activites={filterActivities()}
+        isGoodWeather={isWeatherGood}
+        onDeleteActivity={handleDeleteActivity}
+      />
       <Form onAddActivity={handleAddActivity} />
     </>
   )
