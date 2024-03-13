@@ -1,23 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 
-const url="https://example-apis.vercel.app/api/weather/"
+const url = "https://example-apis.vercel.app/api/weather/"
 
-export default function Weather( {isWeatherGood }) {
+export default function Weather({ isWeatherGood }) {
+  const [emoji, setEmoji] = useState("")
+  const [temperature, setTemperature] = useState("")
 
-    async function loadWeather() {
-        const response = await fetch(url);
-        const data = await response.json();
-        const isGoodWeather = data.isGoodWeather;
-        const emoji = data.condition;
-        const temperature = data.temperature;
-        console.log(data);
-        console.log(isGoodWeather);
-        isWeatherGood(isGoodWeather);
-    }
+  async function loadWeather() {
+    const response = await fetch(url)
+    const data = await response.json()
+    const isGoodWeather = data.isGoodWeather
+    setEmoji(data.condition)
+    setTemperature(data.temperature)
+    isWeatherGood(isGoodWeather)
+  }
 
-    useEffect(() => {
-        loadWeather()
-    }, [])
+  useEffect(() => {
+    loadWeather()
+  }, [])
 
-
+  return (
+    <>
+      {emoji}
+      {temperature}
+    </>
+  )
 }
