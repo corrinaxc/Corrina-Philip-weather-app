@@ -4,6 +4,7 @@ import Form from "./components/Form/Form.jsx"
 import { uid } from "uid"
 import List from "./components/Form/List/List.jsx"
 import useLocalStorage from "./hooks/useLocalStorage.jsx"
+import Weather from "./components/Form/Weather/Weather.jsx"
 
 const initialActivities = [
   {
@@ -19,15 +20,16 @@ const initialActivities = [
 ]
 
 function App() {
+  const [isWeatherGood, setIsWeatherGood] = useState(true)
+
   const [activities, setActivities] = useLocalStorage(
     "activities",
     initialActivities
   )
-  const isForGoodWeather = true
 
   function filterActivities() {
     return activities.filter(
-      (activity) => activity.isForGoodWeather == isForGoodWeather
+      (activity) => activity.isForGoodWeather == isWeatherGood
     )
   }
 
@@ -44,7 +46,8 @@ function App() {
 
   return (
     <>
-      <List activites={filterActivities()} isGoodWeather={isForGoodWeather} />
+      <Weather isWeatherGood={setIsWeatherGood} />
+      <List activites={filterActivities()} isGoodWeather={isWeatherGood} />
       <Form onAddActivity={handleAddActivity} />
     </>
   )
