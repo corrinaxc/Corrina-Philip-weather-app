@@ -17,6 +17,13 @@ export default function Weather({ isWeatherGood }) {
 
   useEffect(() => {
     loadWeather()
+    const timer = setInterval(() => {
+      loadWeather()
+    }, 5000)
+
+    return () => {
+      clearInterval(timer)
+    }
   }, [])
 
   return (
