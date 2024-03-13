@@ -2,6 +2,8 @@ import { useState } from "react"
 import "./App.css"
 import Form from "./components/Form/Form.jsx"
 import { uid } from "uid"
+import List from "./components/Form/List/List.jsx"
+import useLocalStorage from "./hooks/useLocalStorage.jsx"
 
 const initialActivities = [
   {
@@ -13,6 +15,10 @@ const initialActivities = [
 
 function App() {
   const [activities, setActivities] = useState(initialActivities)
+  const [state, setState] = useLocalStorage("activities", { defaultValue:""} )
+
+  setState("hello mum")
+
 
   function handleAddActivity(name, isForGoodWeather) {
     setActivities([
@@ -27,8 +33,10 @@ function App() {
 
   return (
     <>
+      <List activites={ activities } />
       <Form onAddActivity={handleAddActivity} />
     </>
+    
   )
 }
 
