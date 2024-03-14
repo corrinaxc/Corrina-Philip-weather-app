@@ -8,10 +8,10 @@ export default function List({ activites, isGoodWeather, onDeleteActivity }) {
           ? "the sun has got his hat on, and so should you"
           : "bad weather"}
       </h1>
-      {activites.map(({ id, name }) => (
+      {activites.map(({ id, name, emoji }) => (
         <ul className="activity-list" key={id}>
           <li>
-              {name}
+              {name} {emoji}
             <button id="delete-button" onClick={() => onDeleteActivity(id)}>Delete</button>
           </li>
         </ul>

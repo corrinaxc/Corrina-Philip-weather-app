@@ -10,32 +10,38 @@ import Weather from "./components/Form/Weather/Weather.jsx"
 const initialActivities = [
   {
     id: uid(),
-    name: "drink (outdoor) 🍻",
+    name: "drink (outdoor)",
+    emoji: "🍻",
     isForGoodWeather: true,
   },
   {
     id: uid(),
-    name: "drink (indoor) 🍻",
+    name: "drink (indoor)",
+    emoji: "🍻",
     isForGoodWeather: false,
   },
   {
     id: uid(),
-    name: "skateboard 🛹",
+    name: "skateboard",
+    emoji: "🛹",
     isForGoodWeather: true,
   },
   {
     id: uid(),
-    name: "kayak 🛶",
+    name: "kayak",
+    emoji: "🛶",
     isForGoodWeather: true,
   },
   {
     id: uid(),
-    name: "stare wistfully out of the window 😢",
+    name: "stare wistfully out of the window",
+    emoji: "😢",
     isForGoodWeather: false,
   },
   {
     id: uid(),
-    name: "complain about the weather 🤬",
+    name: "complain about the weather ",
+    emoji: "🤬",
     isForGoodWeather: false,
   },
 ]
@@ -60,13 +66,14 @@ function App() {
     setActivities(filteredResult)
   }
 
-  function handleAddActivity(name, isForGoodWeather) {
+  function handleAddActivity(name, isForGoodWeather, emoji) {
     setActivities([
       ...activities,
       {
         id: uid(),
         name: name,
         isForGoodWeather: isForGoodWeather,
+        emoji: emoji,
       },
     ])
   }

@@ -50,3 +50,10 @@ h2 {
     right: 28px;
 
 }
+
+#emoji-input {
+    width:40px;
+    position: absolute;
+    top: 218px;
+    right: 28px;
+}
