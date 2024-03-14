@@ -1,19 +1,23 @@
 .activity-list{
     list-style: none;
+    align-self: center;
+    padding: 0;
+    margin: 20px;
 }
 
 li{
     background-color: #fff3f1;
     border-radius: 10px;
-    width: 70vw;
     height: 4vw;
     position: relative;
     text-align: left;
     padding: 10px;
+
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 3rem;
+    margin-top:80px;
 }
 
 #delete-button{

@@ -1,13 +1,14 @@
 #root {
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
+  box-sizing: border-box;
 }
 
 body{
+  background-repeat: repeat;
   background-image: url("./assets/hand-painted-watercolor-pastel-sky-cloud-background/26_april_8.jpg");
   background-size:cover;
-  background-repeat: repeat;
   position: relative;
   display: flex;
   align-items: center;

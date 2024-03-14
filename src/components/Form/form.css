@@ -1,5 +1,5 @@
 #activity-form {
-    margin: 10vw;
+    margin: 50px;
     display: flex;
     flex-direction: column;
     flex-wrap:wrap;
@@ -9,7 +9,7 @@
     background-color: #fff3f1;
     border-radius: 10px;
     padding: 10px;
-    width: 70vw;
+    width:70vw;
     position: relative;
 }
 
@@ -18,11 +18,11 @@ h2 {
 }
 
 #submit-button {
-    width:20vw;
     align-self: center;
     background-color: #fff3f1;
     border-width: 1px;
     border-color: #213547;
+    text-align:center;
 }
 
 #name {
