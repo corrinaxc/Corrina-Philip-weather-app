@@ -1,0 +1,13 @@
+#weather-display {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+}
+
+#emoji {
+    font-size: 70px;
+}
+
+#temperature {
+    font-size: 70px;
+}

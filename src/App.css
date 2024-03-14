@@ -1,8 +1,14 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+body{
+  background-image: url("./assets/hand-painted-watercolor-pastel-sky-cloud-background/26_april_8.jpg");
+  background-size:cover;
+  position: relative;
+
 }
 
 .logo {

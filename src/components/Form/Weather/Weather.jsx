@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import "./weather.css";
 
 const url = "https://example-apis.vercel.app/api/weather/"
 
@@ -27,9 +28,9 @@ export default function Weather({ isWeatherGood }) {
   }, [])
 
   return (
-    <>
-      {emoji}
-      {temperature}
-    </>
+    <div id="weather-display">
+      <span id="emoji">{emoji} </span>
+      <span id="temperature">{temperature}°c</span>
+    </div>
   )
 }
