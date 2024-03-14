@@ -40,6 +40,7 @@ export default function Form({ onAddActivity }) {
 }
 
 const emojis = [
+  "👀",
   "🤠", 
   "🧖",
   "🤾‍♀️",
