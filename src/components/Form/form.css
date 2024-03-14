@@ -2,13 +2,15 @@
     margin: 10vw;
     display: flex;
     flex-direction: column;
+    flex-wrap:wrap;
     text-align: left;
-    gap: 10px;
+    gap: 15px;
     font-size: 1em;
     background-color: #fff3f1;
     border-radius: 10px;
     padding: 10px;
-    width: 70vw
+    width: 70vw;
+    position: relative;
 }
 
 h2 {
@@ -35,4 +37,16 @@ h2 {
     border-width: 1px;
     background-color:#fff3f1;
     align-self: center;
+}
+
+#isForGoodWeather-label, #isForGoodWeather {
+    flex: 1;
+}
+
+#isForGoodWeather {
+    width: 20px;
+    position: absolute;
+    top: 180px;
+    right: 28px;
+
 }
