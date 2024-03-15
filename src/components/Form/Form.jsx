@@ -1,4 +1,5 @@
 import "./form.css";
+import {forwardRef, useImperativeHandle} from "react"
 
 const emojis = [
   "👀",
@@ -88,8 +89,17 @@ const emojis = [
   "🐻‍❄️",
 ]
 
+const Form = forwardRef((props, ref) => {
 
-export default function Form({ onAddActivity }) {
+  useImperativeHandle(ref, () => ({
+    focusOnName,
+  }));
+
+  function focusOnName() {
+    document.getElementById("name").focus()
+  }
+
+
   function onSubmit(event) {
     event.preventDefault()
 
@@ -97,12 +107,10 @@ export default function Form({ onAddActivity }) {
     const name = formData.get("name")
     const isForGoodWeather = formData.get("weather")
     const emoji = formData.get("emoji")
-    onAddActivity(name, isForGoodWeather != null, emoji)
+    props.onAddActivity(name, isForGoodWeather != null, emoji)
 
-    // reset the fields
     event.target.reset()
-    // focus on name
-    document.getElementById("name").focus()
+    focusOnName()
   }
 
   return (
@@ -123,5 +131,6 @@ export default function Form({ onAddActivity }) {
       </form>
     </>
   )
-}
+})
 
+export default Form

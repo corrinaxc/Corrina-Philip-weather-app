@@ -1,4 +1,4 @@
-import { useState } from "react"
+import {useRef, useState} from "react"
 import "./App.css"
 import Form from "./components/Form/Form.jsx"
 import { uid } from "uid"
@@ -49,6 +49,8 @@ const initialActivities = [
 function App() {
   const [isWeatherGood, setIsWeatherGood] = useState(true)
 
+  const childRef = useRef();
+
   const [activities, setActivities] = useLocalStorage(
     "activities",
     initialActivities
@@ -56,7 +58,7 @@ function App() {
 
   function filterActivities() {
     return activities.filter(
-      (activity) => activity.isForGoodWeather == isWeatherGood
+      (activity) => activity.isForGoodWeather === isWeatherGood
     )
   }
 
@@ -64,6 +66,9 @@ function App() {
     // filter activities - return all besides the activity where activity.id = id
     const filteredResult = activities.filter((activity) => activity.id !== id)
     setActivities(filteredResult)
+    if (childRef.current) {
+      childRef.current.focusOnName();
+    }
   }
 
   function handleAddActivity(name, isForGoodWeather, emoji) {
@@ -86,7 +91,7 @@ function App() {
         isGoodWeather={isWeatherGood}
         onDeleteActivity={handleDeleteActivity}
       />
-      <Form onAddActivity={handleAddActivity} />
+      <Form onAddActivity={handleAddActivity} ref={childRef}/>
     </>
   )
 }
