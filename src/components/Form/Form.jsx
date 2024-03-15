@@ -109,7 +109,6 @@ const Form = forwardRef((props, ref) => {
     setName('');
     setIsForGoodWeather(false);
     setEmoji(emojis[0]);
-    setLocation(locations.europe);
     focusOnName()
   }
 
