@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import {useState, useEffect, useRef} from "react"
 import "./weather.css";
 import useLocalStorage from "../../../hooks/useLocalStorage.jsx"
 
@@ -15,10 +15,11 @@ export default function Weather({ isWeatherGood }) {
   const [temperature, setTemperature] = useState("")
   const [location, setLocation] = useLocalStorage("location", locations.europe);
 
-  const url = `https://example-apis.vercel.app/api/weather/${location}`
+  const urlRef= useRef(`https://example-apis.vercel.app/api/weather/${location}`)
+  const intervalRef = useRef(null);
 
-  async function loadWeather() {
-    const response = await fetch(url)
+  async function loadWeather(_url = urlRef.current) {
+    const response = await fetch(_url)
     const data = await response.json()
     const isGoodWeather = data.isGoodWeather
     setEmoji(data.condition)
@@ -27,20 +28,26 @@ export default function Weather({ isWeatherGood }) {
   }
 
   async function changeLocation(event) {
-    setLocation(event.target.value)
-    await loadWeather()
+    const newLocation = event.target.value;
+    setLocation(newLocation);
+    const newUrl = `https://example-apis.vercel.app/api/weather/${newLocation}`;
+    urlRef.current = newUrl;
+    await loadWeather(newUrl);
   }
 
   useEffect(() => {
-    loadWeather()
-    const timer = setInterval(() => {
-      loadWeather()
-    }, 5000)
+    loadWeather();
+    clearInterval(intervalRef.current);
 
-    return () => {
-      clearInterval(timer)
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
     }
-  }, [])
+
+    const intervalId = setInterval(loadWeather,4000);
+    intervalRef.current = intervalId;
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <>
