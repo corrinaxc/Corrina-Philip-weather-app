@@ -1,5 +1,5 @@
 import "./form.css";
-import {forwardRef, useImperativeHandle} from "react"
+import {forwardRef, useImperativeHandle, useState} from "react"
 
 const emojis = [
   "👀",
@@ -90,6 +90,9 @@ const emojis = [
 ]
 
 const Form = forwardRef((props, ref) => {
+  const [name, setName] = useState('');
+  const [isForGoodWeather, setIsForGoodWeather] = useState(false);
+  const [emoji, setEmoji] = useState(emojis[0]);
 
   useImperativeHandle(ref, () => ({
     focusOnName,
@@ -99,17 +102,14 @@ const Form = forwardRef((props, ref) => {
     document.getElementById("name").focus()
   }
 
-
   function onSubmit(event) {
     event.preventDefault()
-
-    const formData = new FormData(event.target)
-    const name = formData.get("name")
-    const isForGoodWeather = formData.get("weather")
-    const emoji = formData.get("emoji")
     props.onAddActivity(name, isForGoodWeather != null, emoji)
 
-    event.target.reset()
+    setName('');
+    setIsForGoodWeather(false);
+    setEmoji(emojis[0]);
+    setLocation(locations.europe);
     focusOnName()
   }
 
@@ -118,11 +118,11 @@ const Form = forwardRef((props, ref) => {
       <form id="activity-form" onSubmit={onSubmit}>
         <h2>Add a New Activity:</h2>
         <label htmlFor="name">Name</label>
-        <input id="name" type="text" name="name" required></input>
+        <input id="name" type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} required></input>
         <label id="isForGoodWeather-label" htmlFor="isForGoodWeather">Good-weather Activity</label>
-        <input id="isForGoodWeather" type="checkbox" name="weather"></input>
-        <label id="emoji-label" htmlFor="emojis-input">Emoji</label>
-        <select id="emojis-input" name="emojis-input">
+        <input id="isForGoodWeather" type="checkbox" name="weather" checked={isForGoodWeather} onChange={(e) => setIsForGoodWeather(e.target.checked)}></input>
+        <label id="emoji-label" htmlFor="emoji">Emoji</label>
+        <select id="emojis" name="emoji" value={emoji} onChange={(e) => setEmoji(e.target.value)}>
           {emojis.map((emoji) => (
             <option key={emoji} value={emoji}>{emoji}</option>
           ))}
