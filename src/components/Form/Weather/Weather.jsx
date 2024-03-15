@@ -1,11 +1,21 @@
 import { useState, useEffect } from "react"
 import "./weather.css";
+import useLocalStorage from "../../../hooks/useLocalStorage.jsx"
 
-const url = "https://example-apis.vercel.app/api/weather/"
+const locations = {
+  europe: "europe",
+  arctic: "arctic",
+  sahara: "sahara",
+  rainforest: "rainforest"
+}
+
 
 export default function Weather({ isWeatherGood }) {
   const [emoji, setEmoji] = useState("")
   const [temperature, setTemperature] = useState("")
+  const [location, setLocation] = useLocalStorage("location", locations.europe);
+
+  const url = `https://example-apis.vercel.app/api/weather/${location}`
 
   async function loadWeather() {
     const response = await fetch(url)
@@ -14,6 +24,11 @@ export default function Weather({ isWeatherGood }) {
     setEmoji(data.condition)
     setTemperature(data.temperature)
     isWeatherGood(isGoodWeather)
+  }
+
+  async function changeLocation(event) {
+    setLocation(event.target.value)
+    await loadWeather()
   }
 
   useEffect(() => {
@@ -28,9 +43,20 @@ export default function Weather({ isWeatherGood }) {
   }, [])
 
   return (
-    <div id="weather-display">
-      <span id="emoji">{emoji} </span>
-      <span id="temperature">{temperature}°c</span>
-    </div>
+    <>
+      <div id="weather-display">
+        <span id="emoji">{emoji} </span>
+        <span id="temperature">{temperature}°c</span>
+      </div>
+      <div>
+        <select id="location" name="location" value={location} onChange={changeLocation}>
+          {Object.keys(locations).map((key) => (
+            <option key={key} value={locations[key]}>
+              {locations[key]}
+            </option>
+          ))}
+        </select>
+      </div>
+    </>
   )
 }
