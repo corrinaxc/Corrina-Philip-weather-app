@@ -102,9 +102,13 @@ const Form = forwardRef((props, ref) => {
     document.getElementById("name").focus()
   }
 
+  function setWeatherCheckbox(event) {
+    setIsForGoodWeather(event.target.checked)
+  }
+
   function onSubmit(event) {
     event.preventDefault()
-    props.onAddActivity(name, isForGoodWeather != null, emoji)
+    props.onAddActivity(name, isForGoodWeather, emoji)
 
     setName('');
     setIsForGoodWeather(false);
@@ -118,8 +122,10 @@ const Form = forwardRef((props, ref) => {
         <h2>Add a New Activity:</h2>
         <label htmlFor="name">Name</label>
         <input id="name" type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} required></input>
+
         <label id="isForGoodWeather-label" htmlFor="isForGoodWeather">Good-weather Activity</label>
-        <input id="isForGoodWeather" type="checkbox" name="weather" checked={isForGoodWeather} onChange={(e) => setIsForGoodWeather(e.target.checked)}></input>
+        <input id="isForGoodWeather" type="checkbox" name="weather" checked={isForGoodWeather} onChange={(e) => setWeatherCheckbox(e)}></input>
+
         <label id="emoji-label" htmlFor="emojis-input">Emoji</label>
         <select id="emojis-input" name="emojis-input" value={emoji} onChange={(e) => setEmoji(e.target.value)}>
           {emojis.map((emoji) => (
