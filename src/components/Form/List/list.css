@@ -1,0 +1,32 @@
+.activity-list{
+    list-style: none;
+    align-self: center;
+    padding: 0;
+    margin: 20px;
+}
+
+li{
+    background-color: #fff3f1;
+    border-radius: 10px;
+    height: 4vw;
+    position: relative;
+    text-align: left;
+    padding: 10px;
+
+}
+
+h1 {
+    font-size: 3rem;
+    margin-top:80px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#delete-button{
+    font-size: 0.8rem;
+    position:absolute;
+    right: 5px;
+    /* height: 4vw; */
+    padding: 5px;
+    background-color: #fff3f1;
+}
