@@ -5,9 +5,18 @@
 }
 
 #emoji {
-    font-size: 50px;
+    font-size: 40px;
 }
 
 #temperature {
-    font-size: 50px;
+    font-size: 30px;
+}
+
+#location{
+    position: absolute;
+    top:70px;
+    right: 40px;
+    background-color: #fff3f1;
+    border-radius: 5px;
+    margin-bottom: 20px;
 }

@@ -5,8 +5,8 @@ export default function List({ activites, isGoodWeather, onDeleteActivity }) {
     <>
       <h1>
         {isGoodWeather === true
-          ? "the sun has got his hat on, and so should you"
-          : "bad weather"}
+          ? "The Sun Has Got His Hat On"
+          : "Bad Weather"}
       </h1>
       {activites.map(({ id, name, emoji }) => (
         <ul className="activity-list" key={id}>
