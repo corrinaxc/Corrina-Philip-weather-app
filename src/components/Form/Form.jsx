@@ -121,8 +121,8 @@ const Form = forwardRef((props, ref) => {
         <input id="name" type="text" name="name" required></input>
         <label id="isForGoodWeather-label" htmlFor="isForGoodWeather">Good-weather Activity</label>
         <input id="isForGoodWeather" type="checkbox" name="weather"></input>
-        <label id="emoji-label" htmlFor="emoji">Emoji</label>
-        <select id="emojis" name="emoji">
+        <label id="emoji-label" htmlFor="emojis-input">Emoji</label>
+        <select id="emojis-input" name="emojis-input">
           {emojis.map((emoji) => (
             <option key={emoji} value={emoji}>{emoji}</option>
           ))}
