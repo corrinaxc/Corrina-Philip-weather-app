@@ -114,7 +114,7 @@ export default function Form({ onAddActivity }) {
         <label id="isForGoodWeather-label" htmlFor="isForGoodWeather">Good-weather Activity</label>
         <input id="isForGoodWeather" type="checkbox" name="weather"></input>
         <label id="emoji-label" htmlFor="emoji">Emoji</label>
-        <select id="emojis" name="emoji">
+        <select id="emojis-input" name="emoji">
           {emojis.map((emoji) => (
             <option key={emoji} value={emoji}>{emoji}</option>
           ))}
