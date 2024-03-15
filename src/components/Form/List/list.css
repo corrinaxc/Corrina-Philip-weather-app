@@ -17,9 +17,11 @@ li{
 
 h1 {
     font-size: 3rem;
-    margin-top:80px;
+    margin-top:60px;
     margin-left: 20px;
     margin-right: 20px;
+    text-align: center;
+    padding: 20px;
 }
 
 #delete-button{

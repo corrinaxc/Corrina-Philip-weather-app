@@ -46,7 +46,7 @@ h2 {
 #isForGoodWeather {
     width: 20px;
     position: absolute;
-    top: 180px;
+    top: 160px;
     right: 28px;
 
 }
@@ -54,6 +54,6 @@ h2 {
 #emojis-input {
     width:40px;
     position: absolute;
-    top: 218px;
+    top: 191px;
     right: 28px;
 }
